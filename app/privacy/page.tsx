@@ -22,7 +22,7 @@ export default function Privacy() {
       <b>Use of Information</b>
       <br />
       The data collected is used for the following purposes: Website
-      Improvement: We analyze the gathered information to enhance our website's
+      Improvement: We analyze the gathered information to enhance our websites
       content, functionality, and user experience. Analytics: We use analytics
       tools to track user behavior, understand trends, and optimize our
       services. Compliance and Security: We may use the collected data to comply
