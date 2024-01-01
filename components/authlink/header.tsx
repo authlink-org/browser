@@ -41,7 +41,7 @@ export default function Header() {
           <h1 className="underline underline-offset-8 decoration-wavy decoration-green-500">
             Top projects hosted on AuthLink
           </h1>
-          <div className="container mx-auto flex w-full flex-col items-center justify-center gap-2 overflow-y-auto p-6 md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3">
+          <div className="container mx-auto flex w-full flex-col items-center justify-center gap-2 p-6 md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3">
             {Projects?.map((Project) => {
               return <ProjectCard Project={Project} />;
             })}
