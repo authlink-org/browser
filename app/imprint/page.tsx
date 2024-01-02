@@ -17,15 +17,28 @@ export default function Imprint() {
         2. Information We Collect
       </b>
       <br />
-      When you visit AuthLink.org, we collect the following information: - User
-      IP Address: To identify the location and provide region-specific content.
-      - Time of Visit: To analyze traffic patterns and optimize user experience.
-      - Country Code: To understand the geographical distribution of our
-      visitors. - Project Visited: To track user interaction with various
-      projects on our website. Additionally, please note that AuthLink.org
-      utilizes third-party providers, such as Google AdSense, which may collect
-      additional information in accordance with their respective privacy
-      policies.
+      When you visit AuthLink.org, we collect the following information:
+      <ul className="ml-4 mt-1 mb-1">
+        <li>
+          <b>User IP Address</b>: To identify the location and provide
+          region-specific content.
+        </li>
+        <li>
+          <b>Time of Visit</b>: To analyze traffic patterns and optimize user
+          experience.
+        </li>
+        <li>
+          <b>Country Code</b>: To understand the geographical distribution of
+          our visitors.
+        </li>
+        <li>
+          <b>Project Visited</b>: To track user interaction with various
+          projects on our website.
+        </li>
+      </ul>
+      Additionally, please note that AuthLink.org utilizes third-party
+      providers, such as Google AdSense, which may collect additional
+      information in accordance with their respective privacy policies.
       <br /> <b>3. Use of Information</b>
       <br /> The data collected is used for the following purposes: - Improve
       and personalize user experience. - Analyze website traffic and usage
