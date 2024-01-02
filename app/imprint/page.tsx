@@ -55,7 +55,7 @@ export default function Imprint() {
       <br />
       <b>8. Contact Information</b>
       <br /> If you have any questions or concerns about this imprint policy,
-      please contact us at [Contact Email Address]. By using AuthLink.org, you
+      please contact us at contact@authlink.org. By using AuthLink.org, you
       acknowledge that you have read and understood this imprint policy and
       agree to its terms.
     </div>
