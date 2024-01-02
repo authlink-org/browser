@@ -8,10 +8,10 @@ export default function Imprint() {
       Effective Date: 01.02.2024
       <br />
       <br /> 1. <b>Introduction AuthLink.org</b>
-      <br /> ("we," "us," or "our") is committed to transparency and protecting
-      the privacy of our users. This imprint policy outlines the collection and
-      use of data when you visit our website. By using AuthLink.org, you agree
-      to the terms described in this policy.
+      <br /> (<b>we,</b> <b>us,</b> or <b>our</b>) is committed to transparency
+      and protecting the privacy of our users. This imprint policy outlines the
+      collection and use of data when you visit our website. By using
+      AuthLink.org, you agree to the terms described in this policy.
       <b>
         <br />
         2. Information We Collect
