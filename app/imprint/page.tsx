@@ -1,5 +1,3 @@
-"use client";
-
 export default function Imprint() {
   return (
     <div className="break-after-auto container mx-auto mt-36">
