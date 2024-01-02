@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     "AuthLink.org is a software monetization platform hosting fully user generated content.",
 };
 
+import Script from "next/script";
+
 export default function RootLayout({
   children,
 }: {
@@ -18,6 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7332189436665724"
+        crossOrigin="anonymous"
+      />
     </html>
   );
 }
