@@ -19,12 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script src="/taboola_header.js" />
       <body className={inter.className}>{children}</body>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7332189436665724"
-        crossOrigin="anonymous"
-      />
     </html>
   );
 }
