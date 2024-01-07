@@ -20,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Script src="/taboola_header.js" />
-      <Script src="/choice.js" />
       <Script
         async
         src="https://capture.authlink.org/script.js"
