@@ -13,6 +13,8 @@ import GetProject from "@/actions/projects/getproject";
 
 import IncrementViews from "@/actions/projects/increment-skips";
 
+import GetViews from "@/actions/views/getviews";
+
 import {
   Card,
   CardContent,
@@ -34,6 +36,12 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
   const [CanCreate, setCanCreate] = useState(false);
   const [Blocking, setBlocking] = useState(false);
   const [Key, setKey] = useState("");
+
+  const [Views, setViews] = useState(0);
+
+  useEffect(() => {
+    GetViews(project?.id || "").then((ViewCount) => [setViews(ViewCount)]);
+  }, []);
 
   const Router = useSearchParams();
 
@@ -99,7 +107,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
                 </Button>
                 <CardDescription className="flex mt-4">
                   <span className="mr-4">
-                    {numeral(project?.views || 0).format("0,0")} Views
+                    {numeral(Views || 0).format("0,0")} Views
                   </span>
                   <span>{moment(project?.createdAt).calendar()}</span>
                 </CardDescription>
