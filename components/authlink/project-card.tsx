@@ -16,11 +16,11 @@ import GetViews from "@/actions/views/getviews";
 import { useEffect, useState } from "react";
 
 export default function ProjectCard({ Project }: { Project: StrippedProject }) {
-  const [Views, setViews] = useState(0);
+  // const [Views, setViews] = useState(0);
 
-  useEffect(() => {
-    GetViews(Project.id).then((ViewCount) => [setViews(ViewCount)]);
-  }, []);
+  // useEffect(() => {
+  //   GetViews(Project.id).then((ViewCount) => [setViews(ViewCount)]);
+  // }, []);
 
   return (
     <Card className="relative max-w-sm min-w-96 min-h-56 mb-8 ml-4 mr-4 max-w-full">
@@ -39,7 +39,9 @@ export default function ProjectCard({ Project }: { Project: StrippedProject }) {
         </CardDescription>
         <CardDescription className="absolute text-pretty bottom-8 left-6">
           <span className="flex">
-            <span className="mr-2">{numeral(Views).format("0,0")} Views</span>
+            <span className="mr-2">
+              {numeral(Project.views).format("0,0")} Views
+            </span>
             <span>{moment(Project.createdAt).calendar()}</span>
           </span>
         </CardDescription>

@@ -10,14 +10,14 @@ export default async function AddPageView(project: string) {
   AddUniqueView(project);
   IncrementViews(project);
 
-  // await prisma.project.update({
-  //   where: {
-  //     id: project,
-  //   },
-  //   data: {
-  //     views: {
-  //       increment: 1,
-  //     },
-  //   },
-  // });
+  await prisma.project.update({
+    where: {
+      id: project,
+    },
+    data: {
+      views: {
+        increment: 1,
+      },
+    },
+  });
 }

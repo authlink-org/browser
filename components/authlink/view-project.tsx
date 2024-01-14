@@ -37,11 +37,11 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
   const [Blocking, setBlocking] = useState(false);
   const [Key, setKey] = useState("");
 
-  const [Views, setViews] = useState(0);
+  // const [Views, setViews] = useState(0);
 
-  useEffect(() => {
-    GetViews(project?.id || "").then((ViewCount) => [setViews(ViewCount)]);
-  }, []);
+  // useEffect(() => {
+  //   GetViews(project?.id || "").then((ViewCount) => [setViews(ViewCount)]);
+  // }, []);
 
   const Router = useSearchParams();
 
@@ -107,7 +107,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
                 </Button>
                 <CardDescription className="flex mt-4">
                   <span className="mr-4">
-                    {numeral(Views || 0).format("0,0")} Views
+                    {numeral(project?.views || 0).format("0,0")} Views
                   </span>
                   <span>{moment(project?.createdAt).calendar()}</span>
                 </CardDescription>
