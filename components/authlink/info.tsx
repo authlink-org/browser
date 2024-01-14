@@ -8,6 +8,12 @@ export default function Info() {
         Privacy
       </a>
       <a
+        href="/projects"
+        className="hover:underline underline-offset-8 decoration-wavy decoration-green-500"
+      >
+        Projects
+      </a>
+      <a
         href="/imprint"
         className="hover:underline underline-offset-8 decoration-wavy decoration-green-500"
       >

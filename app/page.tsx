@@ -8,11 +8,15 @@ export const metadata = {
     "View newly created projects, search for them, and dicover new software.",
 };
 
-export default function Home() {
+import GetTopProjects from "@/actions/projects/top-projects";
+
+export default async function Home() {
+  const Projects = await GetTopProjects();
+
   return (
     <>
       <Navbar />
-      <Header />
+      <Header projects={Projects} />
       <Info />
     </>
   );

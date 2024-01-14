@@ -11,15 +11,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 import ProjectCard from "./project-card";
 
-export default function Header() {
-  const [Projects, setProjects] = useState<TopProjectsReturn>();
-
-  useEffect(() => {
-    GetTopProjects().then((Projects) => {
-      setProjects(Projects);
-    });
-  }, []);
-
+export default function Header({ projects }: { projects: TopProjectsReturn }) {
   return (
     <div className="mt-60">
       <div className="container mx-auto px-4 m-3">
@@ -42,7 +34,7 @@ export default function Header() {
             Top projects hosted on AuthLink
           </h1>
           <div className="container mx-auto flex w-full flex-col items-center justify-center gap-2 p-6 md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3">
-            {Projects?.map((Project) => {
+            {projects?.map((Project) => {
               return <ProjectCard key={Project.id} Project={Project} />;
             })}
           </div>
