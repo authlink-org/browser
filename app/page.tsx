@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Navbar from "@/components/authlink/navbar";
 import Header from "@/components/authlink/header";
 import Info from "@/components/authlink/info";
