@@ -25,16 +25,7 @@ export default function RootLayout({
         src="https://capture.authlink.org/script.js"
         data-website-id="4eb49151-e050-4a75-b30b-30d4f0a6ef9e"
       />
-      <body className={inter.className}>
-        {children}
-
-        <Script src="/consent.js" />
-        <Script src="https://cs.iubenda.com/autoblocking/3456777.js" />
-        <Script src="//cdn.iubenda.com/cs/tcf/stub-v2.js" />
-        <Script src="//cdn.iubenda.com/cs/tcf/safe-tcf-v2.js" />
-        <Script src="//cdn.iubenda.com/cs/gpp/stub.js" />
-        <Script src="//cdn.iubenda.com/cs/iubenda_cs.js" />
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
