@@ -42,7 +42,7 @@ export default function ProjectCard({ Project }: { Project: StrippedProject }) {
             <span className="mr-2">
               {numeral(Project.views).format("0,0")} Views
             </span>
-            <span>{moment(Project.createdAt).calendar()}</span>
+            <span>{moment(Project.createdAt).fromNow()}</span>
           </span>
         </CardDescription>
       </CardHeader>

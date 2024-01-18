@@ -19,4 +19,11 @@ type ViewableProject = {
   } | null;
 } | null;
 
+type ViewMore = {
+  title: string;
+  description: string;
+  createdAt: string;
+  views: number;
+};
+
 type TopProjectsReturn = Array<StrippedProject>;

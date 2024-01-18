@@ -14,21 +14,21 @@ import ProjectCard from "./project-card";
 import { useTheme } from "next-themes";
 
 export default function Header({ projects }: { projects: TopProjectsReturn }) {
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [ctheme, setCTheme] = useState("/authlink-logo-full.vg");
+
+  useEffect(() => {
+    setCTheme(
+      (theme == "light" && "/authlink-logo-full.svg") ||
+        "/authlink-logo-full-light.png"
+    );
+  });
 
   return (
     <div className="mt-60">
       <div className="container mx-auto px-4 m-3">
         <div className="flex justify-center">
-          <Image
-            src={
-              (theme == "light" && "/authlink-logo-full.svg") ||
-              "/authlink-logo-full-light.png"
-            }
-            width={"300"}
-            height={"0"}
-            alt="AuthLink Logo"
-          />
+          <Image src={ctheme} width={"300"} height={"0"} alt="AuthLink Logo" />
         </div>
         <div className="flex justify-center mt-10">
           <Input placeholder="Search for projects" className="max-w-lg mr-2" />

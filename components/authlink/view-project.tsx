@@ -39,6 +39,14 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
   const [Blocking, setBlocking] = useState(false);
   const [Key, setKey] = useState("");
   const { theme, setTheme } = useTheme();
+  const [ctheme, setCTheme] = useState("/authlink-logo-full.vg");
+
+  useEffect(() => {
+    setCTheme(
+      (theme == "light" && "/authlink-logo-full.svg") ||
+        "/authlink-logo-full-light.png"
+    );
+  });
 
   // const [Views, setViews] = useState(0);
 
@@ -64,10 +72,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
         <div className="container mx-auto px-4 m-3">
           <div className="flex justify-center">
             <Image
-              src={
-                (theme == "light" && "/authlink-logo-full.svg") ||
-                "/authlink-logo-full-light.png"
-              }
+              src={ctheme}
               width={"300"}
               height={"0"}
               alt="AuthLink Logo"
@@ -115,7 +120,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
                   <span className="mr-4">
                     {numeral(project?.views || 0).format("0,0")} Views
                   </span>
-                  <span>{moment(project?.createdAt).calendar()}</span>
+                  <span>{moment(project?.createdAt).fromNow()}</span>
                 </CardDescription>
               </CardContent>
             </Card>

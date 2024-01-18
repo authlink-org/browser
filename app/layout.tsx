@@ -20,7 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head></head>
       <Script src="/taboola_header.js" />
       <Script
         async
@@ -30,7 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
