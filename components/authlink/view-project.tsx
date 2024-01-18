@@ -39,7 +39,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
   const [Blocking, setBlocking] = useState(false);
   const [Key, setKey] = useState("");
   const { theme, systemTheme, setTheme } = useTheme();
-  const [ctheme, setCTheme] = useState("/authlink-logo-full.vg");
+  const [ctheme, setCTheme] = useState("/authlink-logo-full.svg");
 
   useEffect(() => {
     setTheme(systemTheme || "light");

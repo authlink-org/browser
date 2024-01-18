@@ -15,7 +15,7 @@ import { useTheme } from "next-themes";
 
 export default function Header({ projects }: { projects: TopProjectsReturn }) {
   const { theme, systemTheme, setTheme } = useTheme();
-  const [ctheme, setCTheme] = useState("/authlink-logo-full.vg");
+  const [ctheme, setCTheme] = useState("/authlink-logo-full.svg");
 
   useEffect(() => {
     setTheme(systemTheme || "light");
