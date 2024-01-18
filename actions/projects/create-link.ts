@@ -31,6 +31,10 @@ export default async function CreateLink(project: string) {
         select: {
           linkvertise_api: true,
           workink_api: true,
+          lootlabs_number_of_tasks: true,
+          lootlabs_theme: true,
+          lootlabs_tier_id: true,
+          lootlabs_api: true,
         },
       },
     },
@@ -74,5 +78,54 @@ export default async function CreateLink(project: string) {
     );
 
     return Url;
+  } else if (ProjectInfo.monetization_method === "lootlabs") {
+    const APIKey = ProjectInfo.Profile?.lootlabs_api;
+    const URL = "https://be.lootlabs.gg/api/lootlabs/content_locker";
+
+    const TaskAmount = ProjectInfo.Profile?.lootlabs_number_of_tasks;
+    const Theme = ProjectInfo.Profile?.lootlabs_theme;
+    const AdTier = ProjectInfo.Profile?.lootlabs_tier_id;
+
+    console.log(TaskAmount);
+
+    const TPromise = await new Promise((Res, Rej) => {
+      fetch(URL, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${APIKey}`,
+        },
+        body: JSON.stringify({
+          title: ProjectInfo.title,
+          url: `https://authlink.org/p/${project}?key=${NewLicense.id}`,
+          tier_id: AdTier,
+          number_of_tasks: TaskAmount,
+          theme: Theme,
+        }),
+      }).then((R) =>
+        R.json().then((Response: LootLabsResponse) => {
+          if (Response.type === "created") {
+            const LootLabsURL = Response.message[0].loot_url;
+            console.log(LootLabsURL);
+            Res(LootLabsURL);
+          }
+        })
+      );
+    });
+
+    return TPromise;
   }
 }
+
+type LootLabsResponse = {
+  type: string;
+  request_time: number;
+  message: Array<{
+    title: string;
+    url: string;
+    tier_id: number;
+    number_of_tasks: number;
+    theme: number;
+    short: string;
+    loot_url: string;
+  }>;
+};
