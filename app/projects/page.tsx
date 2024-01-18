@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import GetAllProjects from "@/actions/projects/getallprojects";
 
 export default async function ViewAllProjects() {

@@ -14,10 +14,11 @@ import ProjectCard from "./project-card";
 import { useTheme } from "next-themes";
 
 export default function Header({ projects }: { projects: TopProjectsReturn }) {
-  const { theme, setTheme } = useTheme();
+  const { theme, systemTheme, setTheme } = useTheme();
   const [ctheme, setCTheme] = useState("/authlink-logo-full.vg");
 
   useEffect(() => {
+    setTheme(systemTheme || "light");
     setCTheme(
       (theme == "light" && "/authlink-logo-full.svg") ||
         "/authlink-logo-full-light.png"
