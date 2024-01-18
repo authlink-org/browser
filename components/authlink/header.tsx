@@ -14,12 +14,12 @@ import ProjectCard from "./project-card";
 import { useTheme } from "next-themes";
 
 export default function Header({ projects }: { projects: TopProjectsReturn }) {
-  const { systemTheme } = useTheme();
+  const { forcedTheme } = useTheme();
   const [ctheme, setCTheme] = useState("/authlink-logo-full.svg");
 
   useEffect(() => {
     setCTheme(
-      (systemTheme == "light" && "/authlink-logo-full.svg") ||
+      (forcedTheme == "light" && "/authlink-logo-full.svg") ||
         "/authlink-logo-full-light.png"
     );
   });
