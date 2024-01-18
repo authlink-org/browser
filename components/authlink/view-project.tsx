@@ -32,10 +32,13 @@ import { Loader2Icon } from "lucide-react";
 import CreateLink from "@/actions/projects/create-link";
 import { useSearchParams } from "next/navigation";
 
+import { useTheme } from "next-themes";
+
 export default function ViewProject({ project }: { project: ViewableProject }) {
   const [CanCreate, setCanCreate] = useState(false);
   const [Blocking, setBlocking] = useState(false);
   const [Key, setKey] = useState("");
+  const { theme, setTheme } = useTheme();
 
   // const [Views, setViews] = useState(0);
 
@@ -61,7 +64,10 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
         <div className="container mx-auto px-4 m-3">
           <div className="flex justify-center">
             <Image
-              src="/authlink-logo-full.svg"
+              src={
+                (theme == "light" && "/authlink-logo-full.svg") ||
+                "/authlink-logo-full-light.png"
+              }
               width={"300"}
               height={"0"}
               alt="AuthLink Logo"

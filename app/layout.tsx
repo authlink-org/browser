@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 import Script from "next/script";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({
   children,
@@ -19,13 +20,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head></head>
       <Script src="/taboola_header.js" />
       <Script
         async
         src="https://capture.authlink.org/script.js"
         data-website-id="4eb49151-e050-4a75-b30b-30d4f0a6ef9e"
       />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

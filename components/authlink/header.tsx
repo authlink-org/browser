@@ -11,13 +11,20 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 import ProjectCard from "./project-card";
 
+import { useTheme } from "next-themes";
+
 export default function Header({ projects }: { projects: TopProjectsReturn }) {
+  const { theme } = useTheme();
+
   return (
     <div className="mt-60">
       <div className="container mx-auto px-4 m-3">
         <div className="flex justify-center">
           <Image
-            src="/authlink-logo-full.svg"
+            src={
+              (theme == "light" && "/authlink-logo-full.svg") ||
+              "/authlink-logo-full-light.png"
+            }
             width={"300"}
             height={"0"}
             alt="AuthLink Logo"
