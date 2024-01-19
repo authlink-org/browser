@@ -33,6 +33,7 @@ import CreateLink from "@/actions/projects/create-link";
 import { useSearchParams } from "next/navigation";
 
 import { useTheme } from "next-themes";
+import SupportUsDialog from "../lootlabs/support-dialog";
 
 export default function ViewProject({ project }: { project: ViewableProject }) {
   const [CanCreate, setCanCreate] = useState(false);
@@ -68,6 +69,7 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
 
   return (
     <>
+      <SupportUsDialog />
       <div className="mt-60">
         <div className="container mx-auto px-4 m-3">
           <div className="flex justify-center">
