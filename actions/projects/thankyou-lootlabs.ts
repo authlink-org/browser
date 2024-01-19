@@ -5,9 +5,9 @@ export default async function CreateSupportLink(project: string) {
     "b7b85e6654ae86350e8d1f90c75bf7fff30a82188b3070ed23a16934921b0a72";
   const URL = "https://be.lootlabs.gg/api/lootlabs/content_locker";
 
-  const TaskAmount = 1;
+  const TaskAmount = 5;
   const Theme = 1;
-  const AdTier = 1;
+  const AdTier = 2;
 
   const TPromise = await new Promise((Res, Rej) => {
     fetch(URL, {
