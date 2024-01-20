@@ -67,9 +67,19 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
     }, 5000);
   }, []);
 
+  useEffect(() => {
+    if (!document.getElementById("rZdWvcXbOuhD")) {
+      setBlocking(true);
+    } else {
+      setBlocking(false);
+    }
+  });
+
   return (
     <>
-      <SupportUsDialog />
+      <SupportUsDialog usingAdBlock={Blocking} />
+      <Script src="//pl22217239.toprevenuegate.com/1c/aa/19/1caa1920f0557c6f89a20b1e5f38a709.js" />
+      <Script src="//pl22182006.toprevenuegate.com/64/a8/4d/64a84d5b1446a4e9fd6cb4b67c4f6e83.js" />
       <div className="mt-60">
         <div className="container mx-auto px-4 m-3">
           <div className="flex justify-center">
@@ -128,15 +138,8 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
             </Card>
           </div>
           <div className="mt-32 font-light">
-            <div className="container mx-auto flex w-full flex-col items-center justify-center gap-2 p-6 md:grid md:grid-cols-2 md:gap-0 lg:grid-cols-3"></div>
-            {/* <ul className="flex justify-between mt-12">
-            {Projects?.map((Project) => {
-              return (
-                <li key={Project.id}>
-                  <ProjectCard Project={Project} />
-                </li>
-              );
-            })} */}
+            <Script src="//pl22217172.toprevenuegate.com/b0b762bac9b26daece4568f2cb9366b9/invoke.js" />
+            <div id="container-b0b762bac9b26daece4568f2cb9366b9" />
           </div>
         </div>
       </div>

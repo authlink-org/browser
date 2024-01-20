@@ -19,7 +19,11 @@ import { Loader2Icon } from "lucide-react";
 
 import CreateSupportLink from "@/actions/projects/thankyou-lootlabs";
 
-export default function SupportUsDialog() {
+export default function SupportUsDialog({
+  usingAdBlock,
+}: {
+  usingAdBlock: boolean;
+}) {
   const [Show, SetShow] = useState(false);
   const [Loading, SetLoading] = useState(false);
 
@@ -38,14 +42,18 @@ export default function SupportUsDialog() {
     });
   }, []);
 
+  if (!usingAdBlock) {
+    return <></>;
+  }
+
   return (
     <AlertDialog open={Show} onOpenChange={() => {}}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Support Us</AlertDialogTitle>
+          <AlertDialogTitle>Disable your AdBlock</AlertDialogTitle>
           <AlertDialogDescription>
-            Complete our LootLabs.gg offer, and we will stop displaying this
-            notification to you.
+            Complete our <b>Linkvertise</b> offer or <b>disable your adblock</b>
+            , and we will stop displaying this notification to you.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

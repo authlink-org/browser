@@ -86,8 +86,6 @@ export default async function CreateLink(project: string) {
     const Theme = ProjectInfo.Profile?.lootlabs_theme;
     const AdTier = ProjectInfo.Profile?.lootlabs_tier_id;
 
-    console.log(TaskAmount);
-
     const TPromise = await new Promise((Res, Rej) => {
       fetch(URL, {
         method: "POST",
@@ -105,7 +103,6 @@ export default async function CreateLink(project: string) {
         R.json().then((Response: LootLabsResponse) => {
           if (Response.type === "created") {
             const LootLabsURL = Response.message[0].loot_url;
-            console.log(LootLabsURL);
             Res(LootLabsURL);
           }
         })
