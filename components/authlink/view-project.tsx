@@ -75,6 +75,10 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
     }
   });
 
+  useEffect(() => {
+    IncrementViews(project?.id || "");
+  }, [Blocking]);
+
   return (
     <>
       <SupportUsDialog usingAdBlock={Blocking} />
@@ -108,11 +112,6 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
                 <Button
                   disabled={!CanCreate}
                   onClick={() => {
-                    if (!document.getElementById("rZdWvcXbOuhD")) {
-                      if (Blocking) return;
-                      setBlocking(true);
-                      IncrementViews(project?.id || "");
-                    }
                     setCanCreate(false);
                     CreateLink(String(project?.id)).then((Res) => {
                       window.location.href = String(Res);
