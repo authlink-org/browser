@@ -69,15 +69,14 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
 
   useEffect(() => {
     if (!document.getElementById("rZdWvcXbOuhD")) {
+      if (Blocking) return;
+
+      IncrementViews(project?.id || "");
       setBlocking(true);
     } else {
       setBlocking(false);
     }
   });
-
-  useEffect(() => {
-    IncrementViews(project?.id || "");
-  }, [Blocking]);
 
   return (
     <>
