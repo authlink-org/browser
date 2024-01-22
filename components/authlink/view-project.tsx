@@ -35,6 +35,9 @@ import { useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import SupportUsDialog from "../lootlabs/support-dialog";
 
+import { getIsGoogle, setIsGoogle } from "@/actions/projects/cookies";
+import GoogleRedirect from "../lootlabs/google-redirect";
+
 export default function ViewProject({ project }: { project: ViewableProject }) {
   const [CanCreate, setCanCreate] = useState(false);
   const [Blocking, setBlocking] = useState(false);
@@ -59,7 +62,6 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
 
   useEffect(() => {
     if (Router.get("key")) {
-      console.log(Key);
       setKey(String(Router.get("key")));
     }
     setTimeout(() => {

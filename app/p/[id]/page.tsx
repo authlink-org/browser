@@ -19,12 +19,18 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
 import AddPageView from "@/actions/views/addpageview";
 import { useState } from "react";
+import { cookies } from "next/headers";
+import GoogleRedirect from "@/components/lootlabs/google-redirect";
 
 export default async function Project({ params }: { params: { id: string } }) {
   const Project = await GetProject(params.id);
   if (Project) {
     AddPageView(params.id);
   }
+
+  // if (!cookies().has("_isGoogle")) {
+  //   return <GoogleRedirect />;
+  // }
 
   return (
     <>
