@@ -20,7 +20,13 @@ import { Loader2Icon } from "lucide-react";
 import { useTimer } from "use-timer";
 import CreateSupportLink from "@/actions/projects/thankyou-lootlabs";
 
-export default function SupportUsDialog() {
+export default function SupportUsDialog({
+  title,
+  id,
+}: {
+  title: string;
+  id: string;
+}) {
   const [Show, SetShow] = useState(true);
   const [Loading, SetLoading] = useState(false);
 
@@ -53,35 +59,35 @@ export default function SupportUsDialog() {
     <AlertDialog open={Show} onOpenChange={() => {}}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            Download software from our Partner
-          </AlertDialogTitle>
+          <AlertDialogTitle>Complete our partners offer!</AlertDialogTitle>
           <AlertDialogDescription>
-            Download this software from our partner and use it for at least 2
-            minutes to continue, the money from this offer will also be shared
-            with the Publisher.
+            Complete our partners offer and we will stop displaying this
+            notification to you. You may be required to wait some time even
+            after completing the offer.
           </AlertDialogDescription>
           <AlertDialogDescription>
             <b>
-              DO NOT REFRESH THE PAGE. THE OFFER IS VIRUS-FREE AND HAS BEEN
-              CHECKED.
+              Do not refresh the page. THE OFFER HAS BEEN CHECKED AND IS
+              VIRUS-FREE.
             </b>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel
-            onClick={() => {
-              SetShow(false);
-            }}
-          >
-            Ignore
-          </AlertDialogCancel>
+          {Loading && (
+            <AlertDialogCancel
+              onClick={() => {
+                SetShow(false);
+              }}
+            >
+              Open Offer
+            </AlertDialogCancel>
+          )}
           <AlertDialogAction
             disabled={Loading}
             onClick={() => {
               SetLoading(true);
               window.open(
-                "https://uy.basesfiles.com/getfile/WJPKIKK?title=Authlink%20Offer",
+                `https://trk.spycrow.site/kl6ixe?source=${id}&title=${title}`,
                 "authlink_offer",
                 "popup"
               );
@@ -100,7 +106,7 @@ export default function SupportUsDialog() {
               <Loader2Icon className="mr-2 mt-0.5 h-4 w-4 animate-spin" />
             )}
             {(status === "RUNNING" && "Please complete the offer.") ||
-              "Download"}
+              "Go to the offer"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

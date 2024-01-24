@@ -3,12 +3,12 @@
 import { cookies } from "next/headers";
 
 export async function SetCookie() {
-  cookies().set("__offer", "finished", {
+  cookies().set("_partner", "finished", {
     httpOnly: true,
-    maxAge: 3 * 86400,
+    maxAge: 86400,
   });
 }
 
 export async function GetCookie() {
-  return cookies().get("__offer")?.value;
+  return cookies().get("_partner")?.value;
 }
