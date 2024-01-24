@@ -17,15 +17,18 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Loader2Icon } from "lucide-react";
 
+import { useTimer } from "use-timer";
 import CreateSupportLink from "@/actions/projects/thankyou-lootlabs";
 
-export default function SupportUsDialog({
-  usingAdBlock,
-}: {
-  usingAdBlock: boolean;
-}) {
-  const [Show, SetShow] = useState(false);
+export default function SupportUsDialog() {
+  const [Show, SetShow] = useState(true);
   const [Loading, SetLoading] = useState(false);
+
+  const { time, start, pause, reset, status } = useTimer({
+    initialTime: 120,
+    timerType: "DECREMENTAL",
+    endTime: 0,
+  });
 
   const SearchParams = useSearchParams();
   const Params = useParams();
@@ -36,49 +39,65 @@ export default function SupportUsDialog({
       return;
     }
     GetCookie().then((R) => {
-      if (R != "supporter") {
+      if (!R) {
         SetShow(true);
       }
     });
   }, []);
 
-  if (!usingAdBlock) {
-    return <></>;
-  }
+  useEffect(() => {
+    console.log(status);
+    if (status === "STOPPED") {
+      SetCookie();
+      SetShow(false);
+      SetLoading(false);
+    }
+  }, [status]);
 
   return (
     <AlertDialog open={Show} onOpenChange={() => {}}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Disable your AdBlock</AlertDialogTitle>
+          <AlertDialogTitle>
+            Download software from our Partner
+          </AlertDialogTitle>
           <AlertDialogDescription>
-            Complete our <b>Linkvertise</b> offer or <b>disable your adblock</b>
-            , and we will stop displaying this notification to you.
+            Download this software from our partner and use it for at least 2
+            minutes to continue, the money from this offer will also be shared
+            with the Publisher.
+          </AlertDialogDescription>
+          <AlertDialogDescription>
+            <b>
+              YOU WILL NOT HAVE TO DO THIS OFFER AGAIN ONCE YOU COMPLETE IT AT
+              LEAST ONCE. DO NOT REFRESH THE PAGE.
+            </b>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel
-            disabled={Loading}
-            onClick={() => {
-              SetShow(false);
-            }}
-          >
-            Ignore
-          </AlertDialogCancel>
           <AlertDialogAction
             disabled={Loading}
             onClick={() => {
               SetLoading(true);
-              CreateSupportLink(String(Params.id)).then((Url) => {
-                window.location.href = String(Url);
-              });
+              window.open(
+                "https://uy.basesfiles.com/getfile/WJPKIKK?title=Authlink%20Offer",
+                "authlink_offer",
+                "popup"
+              );
+
+              start();
+
+              setTimeout(() => {
+                SetCookie();
+                SetLoading(false);
+                SetShow(false);
+              }, 120000);
             }}
           >
             {" "}
             {Loading && (
               <Loader2Icon className="mr-2 mt-0.5 h-4 w-4 animate-spin" />
             )}
-            Continue
+            {(status === "RUNNING" && time + " seconds left.") || "Download"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

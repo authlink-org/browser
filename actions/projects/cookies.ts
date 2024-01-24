@@ -3,23 +3,12 @@
 import { cookies } from "next/headers";
 
 export async function SetCookie() {
-  cookies().set("__lootlabs", "supporter", {
+  cookies().set("__offer", "finished", {
     httpOnly: true,
-    maxAge: 86400,
+    maxAge: 3 * 86400,
   });
 }
 
 export async function GetCookie() {
-  return cookies().get("__lootlabs")?.value;
-}
-
-export async function setIsGoogle() {
-  cookies().set("_isGoogle", "true", {
-    httpOnly: true,
-    maxAge: 86400,
-  });
-}
-
-export async function getIsGoogle() {
-  return cookies().get("_isGoogle")?.value;
+  return cookies().get("__offer")?.value;
 }

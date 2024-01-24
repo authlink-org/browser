@@ -28,10 +28,6 @@ export default async function Project({ params }: { params: { id: string } }) {
     AddPageView(params.id);
   }
 
-  // if (!cookies().has("_isGoogle")) {
-  //   return <GoogleRedirect />;
-  // }
-
   return (
     <>
       <Navbar />
