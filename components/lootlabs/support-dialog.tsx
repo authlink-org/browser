@@ -76,7 +76,11 @@ export default function SupportUsDialog({
           {Loading && (
             <AlertDialogCancel
               onClick={() => {
-                SetShow(false);
+                window.open(
+                  `https://trk.spycrow.site/kl6ixe?source=${id}&title=${title}`,
+                  "authlink_offer",
+                  "popup"
+                );
               }}
             >
               Open Offer
