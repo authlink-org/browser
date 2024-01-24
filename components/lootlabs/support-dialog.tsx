@@ -69,6 +69,13 @@ export default function SupportUsDialog() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
+          <AlertDialogCancel
+            onClick={() => {
+              SetShow(false);
+            }}
+          >
+            Ignore
+          </AlertDialogCancel>
           <AlertDialogAction
             disabled={Loading}
             onClick={() => {
