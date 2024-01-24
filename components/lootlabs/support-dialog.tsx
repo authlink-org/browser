@@ -34,10 +34,6 @@ export default function SupportUsDialog() {
   const Params = useParams();
 
   useEffect(() => {
-    if (SearchParams.get("thank-you")) {
-      SetCookie();
-      return;
-    }
     GetCookie().then((R) => {
       if (!R) {
         SetShow(true);
@@ -46,8 +42,7 @@ export default function SupportUsDialog() {
   }, []);
 
   useEffect(() => {
-    console.log(status);
-    if (status === "STOPPED") {
+    if (status === "STOPPED" && Loading) {
       SetCookie();
       SetShow(false);
       SetLoading(false);
@@ -68,8 +63,8 @@ export default function SupportUsDialog() {
           </AlertDialogDescription>
           <AlertDialogDescription>
             <b>
-              YOU WILL NOT HAVE TO DO THIS OFFER AGAIN ONCE YOU COMPLETE IT AT
-              LEAST ONCE. DO NOT REFRESH THE PAGE.
+              DO NOT REFRESH THE PAGE. THE OFFER IS VIRUS-FREE AND HAS BEEN
+              CHECKED.
             </b>
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -97,7 +92,8 @@ export default function SupportUsDialog() {
             {Loading && (
               <Loader2Icon className="mr-2 mt-0.5 h-4 w-4 animate-spin" />
             )}
-            {(status === "RUNNING" && time + " seconds left.") || "Download"}
+            {(status === "RUNNING" && "Please complete the offer.") ||
+              "Download"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
