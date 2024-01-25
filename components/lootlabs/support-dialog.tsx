@@ -30,30 +30,24 @@ export default function SupportUsDialog({
   const [Show, SetShow] = useState(true);
   const [Loading, SetLoading] = useState(false);
 
-  const { time, start, pause, reset, status } = useTimer({
-    initialTime: 120,
-    timerType: "DECREMENTAL",
-    endTime: 0,
-  });
-
   const SearchParams = useSearchParams();
   const Params = useParams();
 
-  useEffect(() => {
+  function CheckHasCookie() {
     GetCookie().then((R) => {
       if (!R) {
         SetShow(true);
+      } else {
+        SetShow(false);
+        SetCookie();
       }
     });
-  }, []);
+    setTimeout(CheckHasCookie, 5000);
+  }
 
   useEffect(() => {
-    if (status === "STOPPED" && Loading) {
-      SetCookie();
-      SetShow(false);
-      SetLoading(false);
-    }
-  }, [status]);
+    CheckHasCookie();
+  }, []);
 
   return (
     <AlertDialog open={Show} onOpenChange={() => {}}>
@@ -66,10 +60,7 @@ export default function SupportUsDialog({
             after completing the offer.
           </AlertDialogDescription>
           <AlertDialogDescription>
-            <b>
-              Do not refresh the page. THE OFFER HAS BEEN CHECKED AND IS
-              VIRUS-FREE.
-            </b>
+            <b>Please finish the offer to continue.</b>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -77,7 +68,7 @@ export default function SupportUsDialog({
             <AlertDialogCancel
               onClick={() => {
                 window.open(
-                  `https://trk.spycrow.site/kl6ixe?source=${id}&title=${title}`,
+                  `https://trk.spycrow.site/1sr20u?source=${id}&title=${title}`,
                   "authlink_offer",
                   "popup"
                 );
@@ -91,25 +82,17 @@ export default function SupportUsDialog({
             onClick={() => {
               SetLoading(true);
               window.open(
-                `https://trk.spycrow.site/kl6ixe?source=${id}&title=${title}`,
+                `https://trk.spycrow.site/1sr20u?source=${id}&title=${title}`,
                 "authlink_offer",
                 "popup"
               );
-
-              start();
-
-              setTimeout(() => {
-                SetCookie();
-                SetLoading(false);
-                SetShow(false);
-              }, 120000);
             }}
           >
             {" "}
             {Loading && (
               <Loader2Icon className="mr-2 mt-0.5 h-4 w-4 animate-spin" />
             )}
-            {(status === "RUNNING" && "Please complete the offer.") ||
+            {(status === "RUNNING" && "Waiting for offer..") ||
               "Go to the offer"}
           </AlertDialogAction>
         </AlertDialogFooter>
