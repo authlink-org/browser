@@ -27,6 +27,12 @@ export default function SupportUsDialog({
   title: string;
   id: string;
 }) {
+  const { time, start, pause, status } = useTimer({
+    initialTime: 90,
+    endTime: 0,
+    timerType: "DECREMENTAL",
+  });
+
   const [Show, SetShow] = useState(true);
   const [Loading, SetLoading] = useState(false);
 
@@ -64,6 +70,15 @@ export default function SupportUsDialog({
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
+          {time < 60 && (
+            <AlertDialogCancel
+              onClick={() => {
+                SetShow(false);
+              }}
+            >
+              Skip Offer
+            </AlertDialogCancel>
+          )}
           {Loading && (
             <AlertDialogCancel
               onClick={() => {
@@ -81,6 +96,7 @@ export default function SupportUsDialog({
             disabled={Loading}
             onClick={() => {
               SetLoading(true);
+              start();
               window.open(
                 `https://trk.spycrow.site/1sr20u?source=${id}&title=${title}`,
                 "authlink_offer",
