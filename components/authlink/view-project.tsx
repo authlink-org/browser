@@ -77,10 +77,6 @@ export default function ViewProject({ project }: { project: ViewableProject }) {
 
   return (
     <>
-      <SupportUsDialog
-        title={String(project?.title)}
-        id={String(project?.id)}
-      />
       {/* <Script src="https://ajfnee.com/p/waWQiOjExNzQwNjcsInNpZCI6MTMxODQyMywid2lkIjo1MzEzODksInNyYyI6Mn0=eyJ.js" /> */}
       {/* <Script src="//pl22217239.toprevenuegate.com/1c/aa/19/1caa1920f0557c6f89a20b1e5f38a709.js" />
       <Script src="//pl22182006.toprevenuegate.com/64/a8/4d/64a84d5b1446a4e9fd6cb4b67c4f6e83.js" /> */}
