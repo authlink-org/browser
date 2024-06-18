@@ -33,7 +33,6 @@ import CreateLink from "@/actions/projects/create-link";
 import { useSearchParams } from "next/navigation";
 
 import { useTheme } from "next-themes";
-import SupportUsDialog from "../lootlabs/support-dialog";
 
 import { GetCookie, SetCookie } from "@/actions/projects/cookies";
 import GoogleRedirect from "../lootlabs/google-redirect";
