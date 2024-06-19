@@ -41,7 +41,7 @@ export default async function CreateLink(project: string) {
   });
 
   if (!ProjectInfo) {
-    return "https://authlink.org/";
+    return `https://${process.env.HOST}/`;
   }
 
   const ExpireTime = new Date();
@@ -62,7 +62,7 @@ export default async function CreateLink(project: string) {
 
     const Url = CreateLinkvertiseLink(
       String(APIKey),
-      `https://authlink.org/p/${project}?key=${NewLicense.id}`
+      `https://${process.env.HOST}/p/${project}?key=${NewLicense.id}`
     );
 
     return Url;
@@ -74,7 +74,7 @@ export default async function CreateLink(project: string) {
       ProjectInfo.title + " - At AuthLink.org",
       ProjectInfo.description,
       `auth-link-${randomBytes(6).toString("hex")}`,
-      `https://authlink.org/p/${project}?key=${NewLicense.id}`
+      `https://${process.env.HOST}/p/${project}?key=${NewLicense.id}`
     );
 
     return Url;
@@ -94,7 +94,7 @@ export default async function CreateLink(project: string) {
         },
         body: JSON.stringify({
           title: ProjectInfo.title,
-          url: `https://authlink.org/p/${project}?key=${NewLicense.id}`,
+          url: `https://${process.env.HOST}/p/${project}?key=${NewLicense.id}`,
           tier_id: AdTier,
           number_of_tasks: TaskAmount,
           theme: Theme,
